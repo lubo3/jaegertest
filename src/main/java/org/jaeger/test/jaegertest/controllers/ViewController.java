@@ -34,7 +34,7 @@ public class ViewController implements Serializable {
 
     private String dummyClient() {
         Client client = ClientBuilder.newClient(new ClientConfig().register(new Builder(GlobalTracer.get()).withTraceSerialization(false).build()));
-        WebTarget webTarget = client.target("http://localhost:9080/jaegertest/rest/").path("endpoint").path("hi");
+        WebTarget webTarget = client.target("http://localhost:8080/jaegertest/rest/").path("endpoint").path("hi");
         Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
         Response response = invocationBuilder.get();
         return String.valueOf(response.getStatus());
